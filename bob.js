@@ -7,7 +7,11 @@ export const hey = (message) => {
 
   message = message.trim();
 
-  if (askedQuestion(message)) {
+  if (forcefulQuestion(message)) {
+    return 'Calm down, I know what I\'m doing!';
+  }
+
+  else if (askedQuestion(message)) {
     return "Sure.";
   }
 
@@ -37,7 +41,7 @@ function silentTreatment(message) {
   return (message.length == 0);
 }
 
-// function forcefulQuestion(message) {
-//   return (message.yelledAt(-1) == "?")
-// }
+function forcefulQuestion(message) {
+  return (message.match(/[A-Za-z]+/) && message == message.toUpperCase() && message.endsWith('?') )
+}
 
